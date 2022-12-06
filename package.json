@@ -1,0 +1,24 @@
+{
+  "name": "tpf",
+  "version": "1.0.0",
+  "description": "TP Final Curso web services node Ulises Del Bó",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/index.js",
+    "db:create": "npx sequelize-cli db:create",
+    "db:migrate": "npx sequelize-cli db:migrate",
+    "db:seed": "npx sequelize-cli db:seed:all",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "joi": "^17.7.0",
+    "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.25.8",
+    "sequelize-cli": "^6.5.2"
+  }
+}
