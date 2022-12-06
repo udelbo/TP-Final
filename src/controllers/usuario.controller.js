@@ -63,8 +63,8 @@ module.exports = {
             if(!ar) {
                 const archivo = await models.archivo_usuario.create({
                     nombre: req.body.nombre,
-                    file: req.file ? req.file.file_name : null,
-                    original_name: req.file ? req.file.original_name : null,
+                    file: req.file ? req.file.filename : null,
+                    original_name: req.file ? req.file.originalname : null,
                     usuarioId: req.body.usuarioId
                 })
             }

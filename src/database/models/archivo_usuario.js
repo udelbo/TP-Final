@@ -46,7 +46,7 @@ module.exports = (sequelize, DataTypes) => {
 
     ArchivoUsuario.associate = models => {
         //relaciones entre tablas de base de datos
-        ArchivoUsuario.belongsTo = models.usuario//un archivo pertenece a un usuario
+        ArchivoUsuario.belongsTo(models.usuario)//un archivo pertenece a un usuario
     }
 
     return ArchivoUsuario
