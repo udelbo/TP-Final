@@ -2,31 +2,25 @@
 
 module.exports = (sequelize, DataTypes) => {
 
-    let Usuario = sequelize.define('usuario', {//definicion de modelo de tabla usuario
+    let ArchivoUsuario = sequelize.define('archivo_usuario', {//definicion de modelo de tabla usuario
         id: {
             type: DataTypes.BIGINT, //tipo de dato
             autoIncrement: true, // auto incremental
             primaryKey: true, // clave primaria
             allowNull: false, //no permite nulos
         },
-        nombre: {
-            type: DataTypes.STRING, //tipo de dato
-            allowNull: false, //no permite nulos
-        },
-        apellido: {
-            type: DataTypes.STRING, //tipo de dato
-            allowNull: false, //no permite nulos
-        },
-        email: {
-            type: DataTypes.STRING, //tipo de dato
-        },
-        edad: {
-            type: DataTypes.INTEGER, //tipo de dato
-        }/* ,
-        profesion: {
+        nombre: { //nombre para identificar el archivo por si sube varios
             type: DataTypes.STRING, //tipo de dato
             allowNull: true, //no permite nulos
-        } */,
+        },
+        file: { //nuevo nombre
+            type: DataTypes.STRING, //tipo de dato
+            allowNull: true, //no permite nulos
+        },
+        original_name: { // nombre original
+            type: DataTypes.STRING, //tipo de dato
+            allowNull: true, //no permite nulos
+        },
         createdAt: {
             type: DataTypes.DATE, //tipo de dato
             field: 'created_at', //nombre de columna
@@ -50,11 +44,11 @@ module.exports = (sequelize, DataTypes) => {
 
     })
 
-    Usuario.associate = models => {
+    ArchivoUsuario.associate = models => {
         //relaciones entre tablas de base de datos
-        Usuario.hasMany(models.archivo_usuario)//un usuario puede tener varios archivos
+        ArchivoUsuario.belongsTo = models.usuario//un archivo pertenece a un usuario
     }
 
-    return Usuario
+    return ArchivoUsuario
 
 }

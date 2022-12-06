@@ -43,5 +43,66 @@ module.exports = {
                 id: user.id
             }
         })
+    },
+    subirArchivo: async (req, res, next) => {
+        try{
+            //verifica que el usuario existe
+            const user = await models.usuario.findOne({
+                where: {
+                    id: req.body.usuarioId
+                }
+            })
+            if(!user) return next(errors.UsuarioInexistente)
+
+            const ar = await models.archivo_usuario.findOne({
+                where: {
+                    usuarioId: req.body.usuarioId,
+                    nombre: req.body.nombre
+                }
+            })
+            if(!ar) {
+                const archivo = await models.archivo_usuario.create({
+                    nombre: req.body.nombre,
+                    file: req.file ? req.file.file_name : null,
+                    original_name: req.file ? req.file.original_name : null,
+                    usuarioId: req.body.usuarioId
+                })
+            }
+
+            res.json({
+                success: true,
+                data: {
+                    message: 'El archivo se fue cargado correctamente'
+                }
+            })
+        }catch(err){
+            return next(err);
+        }
+    },
+    descargarArchivo: async (req, res, next) => {
+        try{
+            ///verifica que el usuario existe
+            const user = await models.usuario.findOne({
+                where: {
+                    id: req.body.usuarioId
+                }
+            })
+            if(!user) return next(errors.UsuarioInexistente)
+
+            //verifica que el archivo existe
+            const archivo = await models.archivo_usuario.findOne({
+                where: {
+                    usuarioId: req.body.usuarioId,
+                    nombre: req.body.nombre
+                }
+            })
+            
+            if(!archivo) return next(errors.ArchivoInexistente)
+
+            res.download('uploads/archivos-usuarios' + archivo.file, archivo.original_name)//descarga achivo
+            
+        }catch(err){
+            return next(err);
+        }
     }
 }

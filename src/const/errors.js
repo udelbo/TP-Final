@@ -20,5 +20,9 @@ module.exports = {
         code: 1004,
         message: 'El paciente no existe'
     },
+    'ArchivoInexistente': {
+        code: 1004,
+        message: 'El archivo no existe'
+    },
 
 }
