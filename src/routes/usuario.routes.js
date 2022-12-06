@@ -11,7 +11,7 @@ const globalConstants = require('../const/globalConstants')
 const multer = require('multer')
 
 var upload = multer({
-    dest: 'uploads/archivos-usuarios',
+    dest: 'uploads/archivos-usuarios/',
     limits: { fileSize: globalConstants.MAX_FILE_SIZE}
 
 })

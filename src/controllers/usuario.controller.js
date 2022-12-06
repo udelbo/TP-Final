@@ -99,7 +99,7 @@ module.exports = {
             
             if(!archivo) return next(errors.ArchivoInexistente)
 
-            res.download('uploads/archivos-usuarios' + archivo.file, archivo.original_name)//descarga achivo
+            res.download('uploads/archivos-usuarios/' + archivo.file, archivo.original_name)//descarga achivo
             
         }catch(err){
             return next(err);
