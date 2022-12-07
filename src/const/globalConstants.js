@@ -6,4 +6,5 @@ module.exports = {
     DB_USERNAME: process.env.DB_USERNAME,
     DB_PASSWORD: process.env.DB_PASSWORD,
     MAX_FILE_SIZE: process.env.MAX_FILE_SIZE,
+    JWT_SECRET: process.env.JWT_SECRET
 }

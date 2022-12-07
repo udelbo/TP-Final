@@ -22,11 +22,11 @@ module.exports = (sequelize, DataTypes) => {
         },
         edad: {
             type: DataTypes.INTEGER, //tipo de dato
-        }/* ,
-        profesion: {
+        },
+        password: {
             type: DataTypes.STRING, //tipo de dato
-            allowNull: true, //no permite nulos
-        } */,
+            allowNull: false, //no permite nulos
+        },
         createdAt: {
             type: DataTypes.DATE, //tipo de dato
             field: 'created_at', //nombre de columna

@@ -35,14 +35,18 @@ module.exports = {
         }
     },
     crear: async (req, res) => {
-        const user = await models.usuario.create(req.body)
+        try{            
+            const user = await models.usuario.create(req.body)
 
-        res.json({
-            success: true,
-            data: {
-                id: user.id
-            }
-        })
+            res.json({
+                success: true,
+                data: {
+                    id: user.id
+                }
+            })
+        }catch(err){
+            return next(err)
+        }
     },
     subirArchivo: async (req, res, next) => {
         try{

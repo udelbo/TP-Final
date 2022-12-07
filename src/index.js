@@ -6,16 +6,15 @@ const routerConfig = require('./routes/index.routes')
 const errorHandler = require('./middlewares/error')
 let createError = require('http-errors')
 
-const configuracionApi = (app) => {
-    app.use(express.json())
-    app.use(express.urlencoded({ extended: true }))
-
-    return;
+const configuracionApi = (app) => {//configurar api
+    app.use(express.json()) //para que pueda recibir json
+    app.use(express.urlencoded({ extended: true })) //para que pueda recibir formularios
 
 }
 
 const configuracionRouter = (app) =>{
     app.use('/api/', routerConfig.rutas_init())//para acceder a las rutas de la api siempre debera empezar con /api/
+    app.use('/', routerConfig.rutas_auth())//para acceder a las rutas
 
     app.use(function(req, res, next) {
         next(createError(404)) //si no se encuentra la ruta devuelve el error correspondiente, 404
