@@ -8,7 +8,7 @@ const validate = require('../middlewares/validate')
 const usuarioScheme = require('../middlewares/schemes/usuarios.scheme')
 const globalConstants = require('../const/globalConstants')
 
-const multer = require('multer')
+var multer = require('multer')
 
 var upload = multer({
     dest: 'uploads/archivos-usuarios/',
